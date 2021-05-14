@@ -121,7 +121,10 @@ instance Show Game where
     iar Hunterul se găsește pe poziția (1, 1).
 -}
 emptyGame :: Int -> Int -> Game
-emptyGame = undefined
+emptyGame a b = Game a b $ (replicate b Obstacle) ++ [Obstacle] ++ [Hunter] ++ row2 ++ [Obstacle] ++ (concat body) ++ (replicate b Obstacle)
+    where
+        row2 = (replicate (b - 3) Empty)
+        body = (replicate (a - 3) ([Obstacle] ++ (replicate (b - 2) Empty) ++ [Obstacle]))
 
 {-
     *** TODO ***
